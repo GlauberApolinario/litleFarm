@@ -5,17 +5,30 @@ using UnityEngine;
 public class PlayerScript : MonoBehaviour
 {
     public float movementSpeed = 10;
+    public int itemIndex = 0;
+
+    public float itemOffset = 2;
 
     private Rigidbody thisRigidbody;
 
+    private GameObject holdenObject;
+
     void Awake() {
         thisRigidbody = GetComponent<Rigidbody>();
+
     }
         
     // Start is called before the first frame update
     void Start()
     {
         
+    }
+
+    void Update (){
+        if(holdenObject != null){
+
+        holdenObject.transform.position = transform.position + new Vector3(0, itemOffset, 0);
+        }
     }
 
     // Update is called once per frame
@@ -43,4 +56,31 @@ public class PlayerScript : MonoBehaviour
         thisRigidbody.AddForce(walkVector, ForceMode.Force);
     }
 
+    void OnTriggerEnter(Collider other) {
+        GameObject otherObject = other.gameObject;
+        if(otherObject.CompareTag("Sensor")){
+            var sensorScript = otherObject.GetComponent<SensorScript>();
+            var index = sensorScript.itemIndex;
+            UpdateIndex(index);
+            Debug.Log("Colidiu com um sensor");
+        }
+    }
+
+    private void UpdateIndex(int index){
+        this.itemIndex = index;
+
+        //Destroy previous object
+        if(holdenObject !=null){
+            Destroy(holdenObject);
+            holdenObject = null;
+        }
+
+        //Create new object
+        GameObject newObjectPrefab = GameManager.Instance.itemObject[index];
+        if(newObjectPrefab != null){
+            var position = transform.position;
+            var rotation = newObjectPrefab.transform.rotation;
+            holdenObject = Instantiate(newObjectPrefab, position, rotation);
+        }
+    }
 }
