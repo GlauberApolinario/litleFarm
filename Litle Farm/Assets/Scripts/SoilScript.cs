@@ -16,7 +16,7 @@ public class SoilScript : MonoBehaviour
     public float dryCoolDown = 0;
     private float growInterval = 1;
     private float growCoolDown = 0;
-    private float growChance = 0.25f;
+    private float growChance = 0.025f;
 
     void Awake(){
         thisMeshRenderer = GetComponent<MeshRenderer>();
@@ -64,7 +64,11 @@ public class SoilScript : MonoBehaviour
         if(!IsEmpty() && !IsFinished()){
             if((growCoolDown -= Time.deltaTime) <= 0){
                 growCoolDown = growInterval;
-                if (Random.Range(0f, 1f)<growChance){
+                var realChance = growChance;
+                if (isWet){
+                    realChance *= 2f;
+                }
+                if (Random.Range(0f, 1f)<realChance){
                     cropStage++;
                 }
             }
