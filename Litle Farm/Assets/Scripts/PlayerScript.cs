@@ -84,6 +84,36 @@ public class PlayerScript : MonoBehaviour
         }
     }
 
+    void OnCollisionEnter(Collision other) {
+        var otherObject = other.gameObject;
+
+        //SellBox
+        if(otherObject.CompareTag("SellBox")){
+            if(itemIndex == 4 || itemIndex ==5){
+
+                //Teleport fruit
+                var fruitObject = holdenObject;
+                holdenObject = null;
+                var offset = new Vector3(Random.Range(-1f,1f), Random.Range(-1f,1f), Random.Range(-1f,1f));
+                var destination = GameManager.Instance.depositBoxTransform.position + offset;
+                fruitObject.transform.position = destination;
+
+                //Enable Gravity
+                var fruitRigidBody = fruitObject.GetComponent<Rigidbody>();
+                if(fruitRigidBody != null){
+                    fruitRigidBody.useGravity = true;
+                }
+
+                //Reset Index
+                UpdateIndex(0);
+
+                //Give money
+                GameManager.Instance.coins += GameManager.Instance.coinsPerFruit;
+                Debug.Log("Player coins: "+GameManager.Instance.coins);
+
+            }
+        }
+    }
     private void UpdateIndex(int index){
         this.itemIndex = index;
 
