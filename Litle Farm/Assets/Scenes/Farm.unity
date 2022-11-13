@@ -5573,9 +5573,10 @@ GameObject:
   - component: {fileID: 802724485}
   - component: {fileID: 802724484}
   - component: {fileID: 802724483}
+  - component: {fileID: 802724487}
   m_Layer: 0
-  m_Name: Cube
-  m_TagString: Untagged
+  m_Name: Sensor
+  m_TagString: Sensor
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -5613,7 +5614,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 31321ba15b8f8eb4c954353edc038b1d, type: 2}
+  - {fileID: 2100000, guid: 5b918bdbf8c21b748a6336aac499cc5f, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -5658,6 +5659,19 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 19
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &802724487
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 802724482}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fc1a8b0abfe3fba4fb79bcfaae3a4915, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  itemIndex: 1
 --- !u!1 &823149795
 GameObject:
   m_ObjectHideFlags: 0
@@ -5847,9 +5861,10 @@ GameObject:
   - component: {fileID: 840063442}
   - component: {fileID: 840063441}
   - component: {fileID: 840063440}
+  - component: {fileID: 840063444}
   m_Layer: 0
-  m_Name: Cube (3)
-  m_TagString: Untagged
+  m_Name: Sensor
+  m_TagString: Sensor
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -5887,7 +5902,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 31321ba15b8f8eb4c954353edc038b1d, type: 2}
+  - {fileID: 2100000, guid: 5b918bdbf8c21b748a6336aac499cc5f, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -5932,6 +5947,19 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 22
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &840063444
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 840063439}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fc1a8b0abfe3fba4fb79bcfaae3a4915, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  itemIndex: 0
 --- !u!1 &844225579
 GameObject:
   m_ObjectHideFlags: 0
@@ -7512,6 +7540,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   movementSpeed: 25
+  itemIndex: 0
+  itemOffset: 2
 --- !u!1001 &1049398892
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -9025,6 +9055,11 @@ MonoBehaviour:
   - Pumpkin
   - Beet
   - Water
+  itemObject:
+  - {fileID: 0}
+  - {fileID: 5412775330043830567, guid: d2014b53798aa68469b7c933658d0c10, type: 3}
+  - {fileID: 2562511159263252349, guid: 21a92709e34925b409ce5f7cac7c0971, type: 3}
+  - {fileID: 6060328285902472211, guid: 930782c92fcae74469925c262595f96e, type: 3}
 --- !u!4 &1177898545
 Transform:
   m_ObjectHideFlags: 0
@@ -10135,9 +10170,10 @@ GameObject:
   - component: {fileID: 1408009864}
   - component: {fileID: 1408009863}
   - component: {fileID: 1408009862}
+  - component: {fileID: 1408009866}
   m_Layer: 0
-  m_Name: Cube (2)
-  m_TagString: Untagged
+  m_Name: Sensor
+  m_TagString: Sensor
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -10175,7 +10211,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 31321ba15b8f8eb4c954353edc038b1d, type: 2}
+  - {fileID: 2100000, guid: 5b918bdbf8c21b748a6336aac499cc5f, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -10220,6 +10256,19 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 21
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1408009866
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1408009861}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fc1a8b0abfe3fba4fb79bcfaae3a4915, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  itemIndex: 3
 --- !u!1001 &1420113123
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -13735,9 +13784,10 @@ GameObject:
   - component: {fileID: 2007491499}
   - component: {fileID: 2007491498}
   - component: {fileID: 2007491497}
+  - component: {fileID: 2007491501}
   m_Layer: 0
-  m_Name: Cube (1)
-  m_TagString: Untagged
+  m_Name: Sensor
+  m_TagString: Sensor
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -13775,7 +13825,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 31321ba15b8f8eb4c954353edc038b1d, type: 2}
+  - {fileID: 2100000, guid: 5b918bdbf8c21b748a6336aac499cc5f, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -13820,6 +13870,19 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 20
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &2007491501
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2007491496}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fc1a8b0abfe3fba4fb79bcfaae3a4915, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  itemIndex: 2
 --- !u!1001 &2013137974
 PrefabInstance:
   m_ObjectHideFlags: 0
