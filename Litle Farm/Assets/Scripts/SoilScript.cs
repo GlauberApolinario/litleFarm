@@ -92,4 +92,8 @@ public class SoilScript : MonoBehaviour
         seedIndex = index;
         cropStage = 1;
     }
+
+    public void RemoveCrop(){
+        cropStage = 0;
+    }
 }
