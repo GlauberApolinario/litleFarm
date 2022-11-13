@@ -64,6 +64,13 @@ public class PlayerScript : MonoBehaviour
             if(itemIndex == 3) {
                 SoilScript.Water();
             }
+
+            //With seeds
+            if(itemIndex == 1 || itemIndex == 2){
+                if(SoilScript.IsEmpty()){
+                    SoilScript.Seed(itemIndex);
+                }
+            }
         }
     }
 

@@ -8,8 +8,15 @@ public class SoilScript : MonoBehaviour
     public float timeToDry = 120;
     public Material materialDry;
     public Material materialWet;
+    public GameObject cropObject;
+    public int seedIndex;
+    private int oldCropStage;
+    public int cropStage;
     private MeshRenderer thisMeshRenderer;
     public float dryCoolDown = 0;
+    private float growInterval = 1;
+    private float growCoolDown = 0;
+    private float growChance = 0.25f;
 
     void Awake(){
         thisMeshRenderer = GetComponent<MeshRenderer>();
@@ -24,10 +31,42 @@ public class SoilScript : MonoBehaviour
     void Update()
     {
         thisMeshRenderer.material = isWet ? materialWet : materialDry;
+
+        //Dry soil
         if(isWet){
             dryCoolDown-=Time.deltaTime;
             if(dryCoolDown<= 0){
                 isWet = false;
+            }
+        }
+
+        // Update crop
+        if(oldCropStage != cropStage){
+
+            //Destroy crops
+            if(cropObject != null){
+                Destroy(cropObject);
+            }
+
+            //Plant Crop
+            if(cropStage>0){
+                var gm = GameManager.Instance;
+                var prefabs = seedIndex == 1 ? gm.pumpkinPrefabs : gm.beetPrefabs;
+                var cropPrefab = prefabs[cropStage - 1];
+                var position = transform.position;
+                var rotation = cropPrefab.transform.rotation * Quaternion.Euler(Vector3.up * Random.Range(0, 360)); 
+                cropObject = Instantiate(cropPrefab, position, rotation);
+            }
+        }
+        oldCropStage = cropStage;
+
+        //Grow Crops
+        if(!IsEmpty() && !IsFinished()){
+            if((growCoolDown -= Time.deltaTime) <= 0){
+                growCoolDown = growInterval;
+                if (Random.Range(0f, 1f)<growChance){
+                    cropStage++;
+                }
             }
         }
     }
@@ -35,5 +74,18 @@ public class SoilScript : MonoBehaviour
     public void Water(){
         isWet = true;
         dryCoolDown = timeToDry;
+    }
+
+    public bool IsEmpty(){
+        return cropStage == 0;
+    }
+    public bool IsFinished(){
+        return cropStage == 5;
+    }
+
+    public void Seed(int index){
+        if(!IsEmpty()) return;
+        seedIndex = index;
+        cropStage = 1;
     }
 }
