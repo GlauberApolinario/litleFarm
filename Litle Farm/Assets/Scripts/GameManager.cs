@@ -9,6 +9,8 @@ public class GameManager : MonoBehaviour
 
     public List<string> itens;
     public List<GameObject> itemObject;
+    public List<GameObject> beetPrefabs;
+    public List<GameObject> pumpkinPrefabs;
 
     void Awake() {
         Instance = this;
