@@ -71,6 +71,16 @@ public class PlayerScript : MonoBehaviour
                     SoilScript.Seed(itemIndex);
                 }
             }
+
+            //With air
+            if(itemIndex == 0){
+                if(SoilScript.IsFinished()){
+                    var seedIndex = SoilScript.seedIndex;
+                    SoilScript.RemoveCrop();
+                    UpdateIndex(seedIndex+3);
+
+                }
+            }
         }
     }
 
