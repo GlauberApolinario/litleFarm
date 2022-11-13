@@ -6,31 +6,22 @@ public class PlayerScript : MonoBehaviour
 {
     public float movementSpeed = 10;
     public int itemIndex = 0;
-
     public float itemOffset = 2;
-
     private Rigidbody thisRigidbody;
-
     private GameObject holdenObject;
-
     void Awake() {
         thisRigidbody = GetComponent<Rigidbody>();
-
     }
-        
     // Start is called before the first frame update
     void Start()
     {
         
     }
-
     void Update (){
         if(holdenObject != null){
-
         holdenObject.transform.position = transform.position + new Vector3(0, itemOffset, 0);
         }
     }
-
     // Update is called once per frame
     void FixedUpdate() {
         // Create input vector
@@ -58,11 +49,21 @@ public class PlayerScript : MonoBehaviour
 
     void OnTriggerEnter(Collider other) {
         GameObject otherObject = other.gameObject;
+        //Sensor
         if(otherObject.CompareTag("Sensor")){
             var sensorScript = otherObject.GetComponent<SensorScript>();
             var index = sensorScript.itemIndex;
             UpdateIndex(index);
             Debug.Log("Colidiu com um sensor");
+        }
+        //Soil
+        if(otherObject.CompareTag("Soil")){
+            var SoilScript = otherObject.GetComponent<SoilScript>();
+            
+            //With Watering can
+            if(itemIndex == 3) {
+                SoilScript.Water();
+            }
         }
     }
 
